@@ -1,0 +1,31 @@
+---
+# tasks file for elk_centos
+
+- name: Add gpg key
+    command: sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: Add repository for elasticsearch
+  copy:
+    src: elasticsearch.repo
+    dest: /etc/yum.repos.d/
+
+- name: Install elastic search
+  dnf:
+    name: elasticsearch
+    state: present
+
+- name: Installing Kibana
+  dnf:
+  name: kibana
+  state: present
+
+- name: Installing filebeat
+  yum:
+    name: filebeat
+    state: present
+
+- name: Installing logstash
+  dnf:
+    name: logstash
+    state: present
+

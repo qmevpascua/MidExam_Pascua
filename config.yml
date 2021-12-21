@@ -3,12 +3,12 @@
   become: true
   hosts: Ubuntu
   roles:
-   - elk_ubuntu
-   - nagios_ubuntu
-   - grafana_ubuntu
-   - prometheus_ubuntu
-   - influxdb_ubuntu
-   - LAMP_ubuntu
+    - elk_ubuntu
+    - nagios_ubuntu
+    - grafana_ubuntu
+    - prometheus_ubuntu
+    - influxdb_ubuntu
+    - mariadb_ubuntu
 
 
 - name: Install ELK, (Grafana, Prometheus, Influxdb), LAMP in CentOS
@@ -19,5 +19,11 @@
     - influxdb_centos
     - grafana_centos
     - prometheus_centos
-    - LAMP_ubuntu
+    - mariadb_centos
+
+- name: Install Httpd + Php on both systems
+  become: true
+  hosts: all
+  roles:
+    - httpd
 

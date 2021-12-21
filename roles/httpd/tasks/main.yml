@@ -1,0 +1,9 @@
+---
+# tasks file for LAMP_ubuntu
+
+  - name: install apache2 package and add PHP support for apache Ubuntu and CentOS
+    package:
+      name: 
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
+      state: latest
