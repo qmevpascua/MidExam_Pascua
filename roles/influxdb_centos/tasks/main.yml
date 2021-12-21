@@ -1,24 +1,13 @@
 ---
 # tasks file for influxdb_centos
 
-- name: influxdb - create folders
-  file: path=~/rpm state=directory mode=0755
+- name: Add gpg key
+    command: sudo rpm --import https://repos.influxdata.com/influxdb.key
 
-- name: influxdb - check if sources have been downloaded
-  stat: path=~/rpm/{{ INFLUXDB_RPM_FILENAME }}
-  register: influxdb_download
-
-- name: influxdb - download sources
-  shell: wget http://s3.amazonaws.com/influxdb/{{ INFLUXDB_RPM_FILENAME }}
-  when: not influxdb_download.stat.exists
-  args:
-    chdir: ~/rpm
-
-- name: influxdb - install
-  yum: name=/{{ ansible_env.HOME}}/rpm/{{ INFLUXDB_RPM_FILENAME }} state=present
-
-- name: influxdb - copy config
-  template: src=influxdb.conf dest=/etc/influxdb/influxdb.conf
+- name: Install influxdb
+  dnf:
+    name: influxdb2
+    state: present
 
 - name: influxdb - start service
   service: name=influxdb state=started
