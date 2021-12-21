@@ -18,8 +18,8 @@
     - elk_centos
     - influxdb_centos
     - grafana_centos
-    - prometheus_centos
-    - mariadb_centos
+#    - prometheus_centos
+#    - mariadb_centos
 
 - name: Install Httpd + Php on both systems
   become: true
