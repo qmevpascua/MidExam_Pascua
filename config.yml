@@ -1,0 +1,23 @@
+---
+- name: Install ELK, Nagios, (Grafana, Prometheus, Influxdb) in Ubuntu
+  become: true
+  hosts: Ubuntu
+  roles:
+   - elk_ubuntu
+   - nagios_ubuntu
+   - grafana_ubuntu
+   - prometheus_ubuntu
+   - influxdb_ubuntu
+   - LAMP_ubuntu
+
+
+- name: Install ELK, (Grafana, Prometheus, Influxdb), LAMP in CentOS
+  become: true
+  hosts: CentOS
+  roles:
+    - elk_centos
+    - influxdb_centos
+    - grafana_centos
+    - prometheus_centos
+    - LAMP_ubuntu
+
