@@ -1,8 +1,10 @@
 ---
 # tasks file for elk_centos
 
-- name: Add gpg key
-    command: sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+- name: Add Elasticsearch GPG key.
+  rpm_key:
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
 
 - name: Add repository for elasticsearch
   copy:
@@ -16,8 +18,8 @@
 
 - name: Installing Kibana
   dnf:
-  name: kibana
-  state: present
+    name: kibana
+    state: present
 
 - name: Installing filebeat
   yum:

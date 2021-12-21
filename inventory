@@ -1,5 +1,6 @@
 [Ubuntu]
-192.168.1.8 apache_package=apache2 php_package=libapache2-mod-php
+workstation@192.168.1.13
+mark@192.168.1.8 apache_package=apache2 php_package=libapache2-mod-php
 
 [CentOS]
-192.168.1.11 apache_package=httpd php_package=php
+mark@192.168.1.11 apache_package=httpd php_package=php

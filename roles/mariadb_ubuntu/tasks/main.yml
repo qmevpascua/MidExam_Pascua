@@ -1,18 +1,19 @@
 ---
 # tasks file for mariadb_ubuntu
 
-- name: Install MariaDB repository 10.3
-  apt_repository: repo='deb [arch=amd64] http://mirror.zol.co.zw/mariadb/repo/10.3/ubuntu xenial main' state=present
-    
+- name: Install MariaDB repository
+  apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/ubuntu trusty main' state=present
+
 - name: Add repository key to the system
-  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=0xF1656F24C74CD1D8
+  apt_key: keyserver=keyserver.ubuntu.com id=0xcbcb082a1bb943db
+
+- name: Install MariaDB Server
+  apt: name=mariadb-server state=latest update_cache=yes
 
 - name: update
   apt: update_cache=yes   
   ignore_errors: yes      
 
-- name: Install MariaDB Server 10.3
-  apt: name=mariadb-server state=latest
         
 - name: Install MariaDB Client 10.3
   apt: name=mariadb-client state=latest

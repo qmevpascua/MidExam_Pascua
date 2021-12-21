@@ -8,7 +8,7 @@
     - grafana_ubuntu
     - prometheus_ubuntu
     - influxdb_ubuntu
-    - mariadb_ubuntu
+#    - mariadb_ubuntu
 
 
 - name: Install ELK, (Grafana, Prometheus, Influxdb), LAMP in CentOS
